@@ -1,0 +1,69 @@
+   1. <html>  
+   2.     <head>  
+   3.         <title>{Title}</title>  
+   4.         <link rel="shortcut icon" href="{Favicon}">  
+   5.         <link rel="alternate" type="application/rss+xml" href="{RSS}">  
+   6.         <style type="text/css">  
+   7.             body { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }  
+   8.             #posts { width: 500px; margin-left: 0px; padding-left: 0px;}  
+   9.             div.sidebar { margin-top: 50px; float: right; width: 150px; }  
+  10.   
+  11.             div.postunit { position: relative; }  
+  12.             div.post { padding-top: 24px; }  
+  13.             div.editbox { visibility: hidden; height: 16px; position: absolute; top: 0px; }  
+  14.             div.postunit:hover div.editbox { visibility: visible; }  
+  15.   
+  16.             div.overall_content { width: 750px; }  
+  17.         </style>  
+  18.     </head>  
+  19.     <body>  
+  20.         <div class="overall_content">  
+  21.   
+  22.             <div class="header">  
+  23.                 <h1>{Title}</h1>  
+  24.                 <p>{Description}</p>  
+  25.             </div>  
+  26.   
+  27.             {block:ListSidebar}  
+  28.                 <div class="sidebar">  
+  29.                     <a href="{ProfileLink}">  
+  30.                         <img src="{PortraitURL-45}" width='75' height='75'>  
+  31.                     </a>  
+  32.                     <p>{Profile}</p>  
+  33.                     <a href="{ProfileLink}">{OwnerName}'s profile »</a>  
+  34.                 </div>  
+  35.             {/block:ListSidebar}  
+  36.   
+  37.             {block:ShowSidebar}  
+  38.                 <div class="sidebar">  
+  39.                     Viewed {PostViews} times  
+  40.                 </div>  
+  41.             {/block:ShowSidebar}  
+  42.   
+  43.             <div class="posts">  
+  44.                 {block:Posts}  
+  45.                       
+  46.                     <div id="postunit_{PostID}" class="postunit">  
+  47.                         {block:EditBox/}  
+  48.   
+  49.                         <div class="post">  
+  50.                             <b>{DayOfMonth} {ShortMonth}</b>                          
+  51.                             <h3><a href="{Permalink}">{Title}</a></h3>  
+  52.                             {Body}  
+  53.   
+  54.                             {block:Comments/}  
+  55.                         </div>  
+  56.                     </div>  
+  57.                       
+  58.                     {block:Favorite   
+  59.                         hover_id='postunit_{PostID}'   
+  60.                         position_id='postunit_{PostID}'/}   
+  61.   
+  62.                 {/block:Posts}  
+  63.             </div>  
+  64.   
+  65.             {block:Pagination/}  
+  66.   
+  67.         </div>  
+  68.     </body>  
+  69. </html>  
